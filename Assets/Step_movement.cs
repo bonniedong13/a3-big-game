@@ -14,7 +14,7 @@ public class MovingStep : MonoBehaviour
 
     void Update()
     {
-        // All steps use the same gradually increasing speed.
+        
         float speed = Mathf.Min(
             baseSpeed + Time.timeSinceLevelLoad * speedIncreasePerSecond,
             maxSpeed
