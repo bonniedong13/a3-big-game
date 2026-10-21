@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4ca52c205106902479d955c3ee605d8a
+guid: 4a1e57cec91846547a60384d71c1e533
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3448121900547344027
-    second: 1. Peak_0
+      213: -1815966886696435390
+    second: Drawing-2.sketchpad (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,12 +37,12 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 1. Peak_0
+      name: Drawing-2.sketchpad (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1904
-        height: 2500
+        width: 960
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b968e5089903adf20800000000000000
-      internalID: 3448121900547344027
+      spriteID: 241469aecb36cc6e0800000000000000
+      internalID: -1815966886696435390
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      1. Peak_0: 3448121900547344027
+      Drawing-2.sketchpad (1)_0: -1815966886696435390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
