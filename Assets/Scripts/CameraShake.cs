@@ -1,8 +1,4 @@
-// CameraShake.cs
-// Attach to: Main Camera
-// Briefly jiggles the camera for game juice (e.g. when the player lands).
-// The shake is added on top of the camera's position each frame and then
-// removed, so it still works while ClimbingGameManager scrolls the camera.
+
 
 using System.Collections;
 using UnityEngine;
@@ -24,7 +20,7 @@ public class CameraShake : MonoBehaviour
         {
             elapsed += Time.deltaTime;
 
-            // Shake fades out toward the end.
+            
             float fade = 1f - (elapsed / duration);
             Vector3 newOffset = (Vector3)(Random.insideUnitCircle * strength * fade);
 

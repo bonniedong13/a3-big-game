@@ -1,6 +1,4 @@
-// CoinTracker.cs
-// Attach to: a TMP text object on the Canvas (same idea as ClickTracker).
-// Shows the number of coins collected.
+
 
 using TMPro;
 using UnityEngine;

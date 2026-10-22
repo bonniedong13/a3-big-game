@@ -22,8 +22,8 @@ public class ClimbingGameManager : MonoBehaviour
 
     [Header("Camera")]
     public float baseCameraScrollSpeed = 0.5f;
-    public float cameraSpeedIncreasePerSecond = 0.02f;
-    public float maxCameraScrollSpeed = 2f;
+    public float cameraSpeedIncreasePerSecond = 0.08f;
+    public float maxCameraScrollSpeed = 4f;
 
     [Header("Screen Edge")]
     [Range(0.01f, 0.15f)]
