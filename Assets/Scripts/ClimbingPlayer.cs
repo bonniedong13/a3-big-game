@@ -48,7 +48,7 @@ public class ClimbingPlayer : MonoBehaviour
         transform.position = destination;
         IsMoving = false;
 
-        PlayLandingJuice(destination);   // NEW
+        PlayLandingJuice(destination);  
         onComplete?.Invoke();
     }
     
