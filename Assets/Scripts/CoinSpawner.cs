@@ -1,35 +1,54 @@
-// CoinSpawner.cs
-// Attach to: an empty object (e.g. under the "Main Scripts" object)
-// Instantiates the coin prefab at a random on-screen spot every few seconds.
-
 using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform coinParent; // optional, keeps the Hierarchy tidy
     [SerializeField] private float spawnInterval = 2.5f;
-    [SerializeField] private Transform coinParent;   // optional empty object to keep the Hierarchy tidy
+    [SerializeField] private float heightAboveStep = 0.6f;
 
-    private float timer = 0f;
+    private float _timer;
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
+        _timer += Time.deltaTime;
+        if (_timer >= spawnInterval)
         {
-            timer = 0f;
-            SpawnCoin();
+            _timer = 0f;
+            SpawnCoinOnStep();
         }
     }
 
-    private void SpawnCoin()
+    private void SpawnCoinOnStep()
     {
-        // Pick a random point inside the camera's view (viewport is 0..1 on both axes),
-        // so coins always appear on screen even as the camera scrolls up.
-        Vector3 viewportPoint = new Vector3(Random.Range(0.1f, 0.9f), Random.Range(0.2f, 0.8f), 0f);
-        Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(viewportPoint);
-        spawnPosition.z = 0f;
+        Foothold[] steps = FindObjectsByType<Foothold>(FindObjectsSortMode.None);
+        Foothold[] candidates = new Foothold[steps.Length];
+        int count = 0;
 
-        Instantiate(coinPrefab, spawnPosition, Quaternion.identity, coinParent);
+        foreach (Foothold step in steps)
+        {
+            if (IsGoodSpot(step)) candidates[count++] = step;
+        }
+
+        if (count == 0) return;
+
+        Foothold chosen = candidates[Random.Range(0, count)];
+        Vector3 position = chosen.transform.position + Vector3.up * heightAboveStep;
+
+        // Don't stack a second coin on the same step.
+        Collider2D hit = Physics2D.OverlapCircle(position, 0.3f);
+        if (hit != null && hit.GetComponent<Coin>() != null) return;
+
+        Instantiate(coinPrefab, position, Quaternion.identity, coinParent);
+    }
+
+    // A step is a good spot if it is visible and not far below the player.
+    private bool IsGoodSpot(Foothold step)
+    {
+        Vector3 view = Camera.main.WorldToViewportPoint(step.transform.position);
+        bool onScreen = view.x > 0.05f && view.x < 0.95f && view.y > 0.1f && view.y < 0.95f;
+        bool notBehindPlayer = step.transform.position.y > player.position.y - 0.5f;
+        return onScreen && notBehindPlayer;
     }
 }

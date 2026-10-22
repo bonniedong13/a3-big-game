@@ -7,24 +7,13 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-
+ 
 public class ElevationBar : MonoBehaviour
 {
-    [SerializeField] private Transform player;
     [SerializeField] private Image fillImage;
-    [SerializeField] private float summitElevation = 120f;
-
-    private float _startElevation;
-
-    private void Start()
-    {
-        _startElevation = player.position.y;
-    }
-
+    [SerializeField] private float summitElevation = 200f;
+ 
     private void Update()
     {
-        float progress = (player.position.y - _startElevation)
-                         / (summitElevation - _startElevation);
-        fillImage.fillAmount = Mathf.Clamp01(progress);
+        fillImage.fillAmount = Mathf.Clamp01(StepScroller.Elevation / summitElevation);
     }
-}
