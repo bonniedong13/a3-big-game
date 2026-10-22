@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ElevationBar
   player: {fileID: 1956496782}
   fillImage: {fileID: 983254176}
-  summitElevation: 60
+  summitElevation: 300
 --- !u!114 &32057607
 MonoBehaviour:
   m_ObjectHideFlags: 0
