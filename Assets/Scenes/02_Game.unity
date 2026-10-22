@@ -131,7 +131,6 @@ GameObject:
   - component: {fileID: 413766491}
   - component: {fileID: 413766490}
   - component: {fileID: 413766489}
-  - component: {fileID: 413766488}
   m_Layer: 0
   m_Name: Background-sky
   m_TagString: Untagged
@@ -139,20 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &413766488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413766487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ebc103ce727b44bcd51e8870c790c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrollingBG
-  speed: 0.1
-  bgRenderer: {fileID: 413766490}
 --- !u!64 &413766489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -679,7 +664,6 @@ GameObject:
   - component: {fileID: 1363435426}
   - component: {fileID: 1363435425}
   - component: {fileID: 1363435424}
-  - component: {fileID: 1363435423}
   - component: {fileID: 1363435422}
   m_Layer: 0
   m_Name: Ground
@@ -732,20 +716,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &1363435423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363435421}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e8ebc103ce727b44bcd51e8870c790c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrollingBG
-  speed: 0.2
-  bgRenderer: {fileID: 1363435424}
 --- !u!23 &1363435424
 MeshRenderer:
   m_ObjectHideFlags: 0
