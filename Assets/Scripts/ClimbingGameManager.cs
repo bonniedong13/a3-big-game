@@ -48,12 +48,10 @@ public class ClimbingGameManager : MonoBehaviour
 
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
-
-        // Start spawning above the player.
+        
         nextSpawnY =
             player.transform.position.y + firstSpawnHeight;
-
-        // Create several footholds at the beginning.
+        
         for (int i = 0; i < startingFootholds; i++)
         {
             SpawnFoothold();
@@ -137,15 +135,13 @@ public class ClimbingGameManager : MonoBehaviour
     {
         if (gameOver || player.IsMoving)
             return;
-
-        // Skip any destroyed footholds at the front of the queue.
+        
         while (nextFootholdIndex < footholds.Count &&
                footholds[nextFootholdIndex] == null)
         {
             nextFootholdIndex++;
         }
-
-        // Only the exact next foothold can be clicked.
+        
         if (nextFootholdIndex >= footholds.Count)
             return;
 
@@ -208,8 +204,7 @@ public class ClimbingGameManager : MonoBehaviour
 
             if (foothold == null)
                 continue;
-
-            // Only remove footholds that have already been passed.
+            
             bool alreadyUsed = i < nextFootholdIndex;
 
             if (alreadyUsed &&

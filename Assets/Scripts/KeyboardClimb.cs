@@ -1,18 +1,9 @@
-// KeyboardClimb.cs
-// Attach to: an empty object (e.g. "Main Scripts")
-// Lets the player climb with the keyboard:
-//   Left / A   -> next step up, preferring the one to the left
-//   Right / D  -> next step up, preferring the one to the right
-//   Up / W / Space -> nearest step in the next row up
-// It "presses" the chosen foothold the same way a mouse click does, so
-// the rest of the game (score, spawning, game over) works unchanged.
-
 using UnityEngine;
 
 public class KeyboardClimb : MonoBehaviour
 {
     [SerializeField] private ClimbingPlayer player;
-    [SerializeField] private float rowTolerance = 0.5f;   // steps within this height count as one row
+    [SerializeField] private float rowTolerance = 0.5f;  
 
     private void Update()
     {
@@ -44,12 +35,10 @@ public class KeyboardClimb : MonoBehaviour
                 best = step;
             }
         }
-
-        // Same effect as clicking the foothold with the mouse.
+        
         if (best != null) best.SendMessage("OnMouseDown", SendMessageOptions.DontRequireReceiver);
     }
-
-    // Height of the lowest row of steps above the player.
+    
     private float FindNextRowHeight(Foothold[] steps)
     {
         float playerY = player.transform.position.y;
@@ -62,8 +51,7 @@ public class KeyboardClimb : MonoBehaviour
         }
         return lowest;
     }
-
-    // Lower score = better choice. Steps in the wrong direction get a big penalty.
+    
     private float ScoreStep(Foothold step, int direction)
     {
         float dx = step.transform.position.x - player.transform.position.x;

@@ -7,17 +7,17 @@ public class ClimateManager : MonoBehaviour
     public class Zone
     {
         public string name = "Sunny";
-        public float minElevation;               // height above the start where this zone begins
+        public float minElevation;               
         public Color skyColor = Color.cyan;
-        public GameObject backgroundObject;      // optional, e.g. background1_0
-        public ParticleSystem weather;           // optional (Play On Awake OFF)
+        public GameObject backgroundObject;      
+        public ParticleSystem weather;           
     }
  
     [SerializeField] private Transform player;
-    [SerializeField] private Camera targetCamera;   // Background Type = Solid Color
-    [SerializeField] private Zone[] zones;          // order them lowest to highest
+    [SerializeField] private Camera targetCamera;   
+    [SerializeField] private Zone[] zones;          
     [SerializeField] private float fadeSpeed = 2f;
-    [SerializeField] private TMP_Text zoneLabel;    // optional UI text that shows the zone name
+    [SerializeField] private TMP_Text zoneLabel;    
  
     private int currentZone = -1;
     private float _startY;
@@ -41,8 +41,7 @@ public class ClimateManager : MonoBehaviour
     private void Update()
     {
         UpdateZone();
- 
-        // Smoothly blend toward the current zone's color.
+        
         targetCamera.backgroundColor = Color.Lerp(
             targetCamera.backgroundColor, _targetColor, fadeSpeed * Time.deltaTime);
     }

@@ -35,8 +35,7 @@ public class ClimbingPlayer : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / climbDuration);
-
-            // Smooth movement with a small climbing arc.
+            
             float arc = Mathf.Sin(t * Mathf.PI) * 0.5f;
 
             transform.position = Vector3.Lerp(
@@ -52,8 +51,7 @@ public class ClimbingPlayer : MonoBehaviour
         PlayLandingJuice(destination);   // NEW
         onComplete?.Invoke();
     }
-
-    // NEW: plays the particle puff, sound and camera shake on landing.
+    
     private void PlayLandingJuice(Vector3 position)
     {
         if (landPuff != null)
