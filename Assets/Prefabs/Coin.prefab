@@ -153,5 +153,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   Value: 1
   Lifetime: 4
-  _collectSound: {fileID: 0}
+  _collectSound: {fileID: 8300000, guid: c363b3a6f75b94d218a7a61c8f9b4704, type: 3}
   _collectEffectPrefab: {fileID: 0}
