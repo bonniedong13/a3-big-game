@@ -222,6 +222,10 @@ public class ClimbingGameManager : MonoBehaviour
 
         gameOver = true;
 
+        TopCoinScores scores = FindAnyObjectByType<TopCoinScores>();
+        if (scores != null)
+            scores.RecordRun();
+
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
 
