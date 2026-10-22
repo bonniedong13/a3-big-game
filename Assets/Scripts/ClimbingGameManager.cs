@@ -21,7 +21,9 @@ public class ClimbingGameManager : MonoBehaviour
     public float spawnAheadDistance = 12f;
 
     [Header("Camera")]
-    public float cameraScrollSpeed = 0.5f;
+    public float baseCameraScrollSpeed = 0.5f;
+    public float cameraSpeedIncreasePerSecond = 0.02f;
+    public float maxCameraScrollSpeed = 2f;
 
     [Header("Screen Edge")]
     [Range(0.01f, 0.15f)]
@@ -71,10 +73,14 @@ public class ClimbingGameManager : MonoBehaviour
 
     private void ScrollCamera()
     {
+        float speed = Mathf.Min(
+        baseCameraScrollSpeed
+            + Time.timeSinceLevelLoad * cameraSpeedIncreasePerSecond,
+        maxCameraScrollSpeed
+    );
+
         Vector3 position = mainCamera.transform.position;
-
-        position.y += cameraScrollSpeed * Time.deltaTime;
-
+        position.y += speed * Time.deltaTime;
         mainCamera.transform.position = position;
     }
 
