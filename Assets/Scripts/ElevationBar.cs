@@ -1,19 +1,22 @@
-// ElevationBar.cs
-// Attach to: the bar object on the Canvas.
-// Fills a vertical bar based on how close the player is to the summit.
-// Setup: Image Type = Filled, Fill Method = Vertical.
-// Anchor the bar to the right edge (shift-click the anchor preset so the
-// pivot matches) so it hugs the side at every resolution.
-
 using UnityEngine;
 using UnityEngine.UI;
  
 public class ElevationBar : MonoBehaviour
 {
+    [SerializeField] private Transform player;
     [SerializeField] private Image fillImage;
-    [SerializeField] private float summitElevation = 200f;
+    [SerializeField] private float summitElevation = 60f;   // height above the start that fills the bar
+ 
+    private float startY;
+ 
+    private void Start()
+    {
+        startY = player.position.y;
+    }
  
     private void Update()
     {
-        fillImage.fillAmount = Mathf.Clamp01(StepScroller.Elevation / summitElevation);
+        float climbed = player.position.y - startY;
+        fillImage.fillAmount = Mathf.Clamp01(climbed / summitElevation);
     }
+}

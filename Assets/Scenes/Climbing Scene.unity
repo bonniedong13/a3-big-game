@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: Elevation
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5790,6 +5790,52 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &758499378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 758499380}
+  - component: {fileID: 758499379}
+  m_Layer: 0
+  m_Name: Keyboard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &758499379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758499378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ca80f3c637c4f119e883982e277c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KeyboardClimb
+  player: {fileID: 723454695}
+  rowTolerance: 0.5
+--- !u!4 &758499380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758499378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917135623
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,6 +6066,7 @@ MonoBehaviour:
     backgroundObject: {fileID: 1503260403}
     weather: {fileID: 0}
   fadeSpeed: 2
+  zoneLabel: {fileID: 0}
 --- !u!4 &1051991312
 Transform:
   m_ObjectHideFlags: 0
@@ -6394,8 +6441,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinSpawner
   coinPrefab: {fileID: 8419548277236144186, guid: 28f77dbc25d4f41379980b66dca5a201, type: 3}
-  spawnInterval: 2.5
+  player: {fileID: 723454697}
   coinParent: {fileID: 0}
+  spawnInterval: 2.5
+  heightAboveStep: 0.6
 --- !u!4 &1640297716
 Transform:
   m_ObjectHideFlags: 0
@@ -6603,7 +6652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d045d6e27f92b7e4885c29113001d2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClimbingGameManager
-  footholdPrefab: {fileID: 6798809440060139156, guid: 790eb9ec6fbb295478848eddf751a1a7, type: 3}
+  footholdPrefab: {fileID: 8612442082922928966, guid: 037e53a5a777ae447b8d63bd3ae6d645, type: 3}
   player: {fileID: 723454695}
   mainCamera: {fileID: 570870237}
   elevationText: {fileID: 150527228}
@@ -6857,3 +6906,4 @@ SceneRoots:
   - {fileID: 1503260405}
   - {fileID: 1051991312}
   - {fileID: 274282692}
+  - {fileID: 758499380}

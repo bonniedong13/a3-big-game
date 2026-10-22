@@ -7,30 +7,33 @@ public class ClimateManager : MonoBehaviour
     public class Zone
     {
         public string name = "Sunny";
-        public float minElevation;               // StepScroller.Elevation where this zone starts
+        public float minElevation;               // height above the start where this zone begins
         public Color skyColor = Color.cyan;
         public GameObject backgroundObject;      // optional, e.g. background1_0
         public ParticleSystem weather;           // optional (Play On Awake OFF)
     }
  
+    [SerializeField] private Transform player;
     [SerializeField] private Camera targetCamera;   // Background Type = Solid Color
     [SerializeField] private Zone[] zones;          // order them lowest to highest
     [SerializeField] private float fadeSpeed = 2f;
     [SerializeField] private TMP_Text zoneLabel;    // optional UI text that shows the zone name
  
-    private int _currentZone = -1;
+    private int currentZone = -1;
+    private float _startY;
     private Color _targetColor;
  
     private void Start()
     {
         if (targetCamera == null) targetCamera = Camera.main;
-        if (targetCamera == null || zones.Length == 0)
+        if (targetCamera == null || player == null || zones.Length == 0)
         {
-            Debug.LogWarning("ClimateManager is missing a camera or zones.");
+            Debug.LogWarning("ClimateManager is missing a camera, player or zones.");
             enabled = false;
             return;
         }
  
+        _startY = player.position.y;
         _targetColor = targetCamera.backgroundColor;
         UpdateZone();
     }
@@ -49,7 +52,7 @@ public class ClimateManager : MonoBehaviour
         int index = 0;
         for (int i = 0; i < zones.Length; i++)
         {
-            if (StepScroller.Elevation >= zones[i].minElevation) index = i;
+            if (player.position.y - _startY >= zones[i].minElevation) index = i;
         }
         return index;
     }
@@ -57,9 +60,9 @@ public class ClimateManager : MonoBehaviour
     private void UpdateZone()
     {
         int index = FindZoneIndex();
-        if (index == _currentZone) return;
+        if (index == currentZone) return;
  
-        _currentZone = index;
+        currentZone = index;
         _targetColor = zones[index].skyColor;
         if (zoneLabel != null) zoneLabel.text = zones[index].name;
         ShowOnlyZone(index);

@@ -9,36 +9,30 @@ public class Coin : MonoBehaviour
     // Static, like Clickable.Clicks, so any script (shop, UI) can read Coin.Coins.
     public static int Coins = 0;
  
-    public int value = 1;
-    public float lifetime = 4f;
+    public int Value = 1;
+    public float Lifetime = 4f;
  
-    [SerializeField] private AudioClip collectSound;
-    [SerializeField] private GameObject collectEffectPrefab;   // optional particle burst
+    [SerializeField] private AudioClip _collectSound;
+    [SerializeField] private GameObject _collectEffectPrefab;   // optional particle burst
  
     private void Start()
     {
-        Destroy(gameObject, lifetime);
-    }
- 
-    private void Update()
-    {
-        // Ride down with the footholds so the coin stays on its step.
-        transform.position += Vector3.down * StepScroller.Speed * Time.deltaTime;
+        Destroy(gameObject, Lifetime);
     }
  
     private void OnMouseDown()
     {
-        Coins += value;
+        Coins += Value;
  
         // PlayClipAtPoint keeps playing after this object is destroyed.
         // (An AudioSource on a destroyed object would cut the sound off.)
-        if (collectSound != null)
+        if (_collectSound != null)
         {
-            AudioSource.PlayClipAtPoint(collectSound, transform.position);
+            AudioSource.PlayClipAtPoint(_collectSound, transform.position);
         }
-        if (collectEffectPrefab != null)
+        if (_collectEffectPrefab != null)
         {
-            Instantiate(collectEffectPrefab, transform.position, Quaternion.identity);
+            Instantiate(_collectEffectPrefab, transform.position, Quaternion.identity);
         }
  
         Destroy(gameObject);

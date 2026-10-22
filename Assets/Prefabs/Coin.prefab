@@ -81,7 +81,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.7169812, g: 0.64387393, b: 0.1792453, a: 1}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c78abf5ce00b4087b56cbab7d8be7e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
-  value: 1
-  lifetime: 4
-  collectSound: {fileID: 8300000, guid: ec6c993acbbbe4f3c865821e97ae6d77, type: 3}
-  collectEffectPrefab: {fileID: 0}
+  Value: 1
+  Lifetime: 4
+  _collectSound: {fileID: 0}
+  _collectEffectPrefab: {fileID: 0}
