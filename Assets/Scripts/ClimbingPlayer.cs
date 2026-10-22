@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using UnityEngine;
@@ -6,6 +5,10 @@ using UnityEngine;
 public class ClimbingPlayer : MonoBehaviour
 {
     public float climbDuration = 0.35f;
+
+    [SerializeField] private ParticleSystem landPuff;
+    [SerializeField] private AudioSource landSound;
+    [SerializeField] private CameraShake cameraShake;
 
     public bool IsMoving { get; private set; }
 
@@ -46,6 +49,19 @@ public class ClimbingPlayer : MonoBehaviour
         transform.position = destination;
         IsMoving = false;
 
+        PlayLandingJuice(destination);   // NEW
         onComplete?.Invoke();
+    }
+
+    // NEW: plays the particle puff, sound and camera shake on landing.
+    private void PlayLandingJuice(Vector3 position)
+    {
+        if (landPuff != null)
+        {
+            landPuff.transform.position = position;
+            landPuff.Play();
+        }
+        if (landSound != null) landSound.Play();
+        if (cameraShake != null) cameraShake.Shake(0.15f, 0.1f);
     }
 }
